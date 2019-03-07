@@ -2978,6 +2978,15 @@ void cmd_oem_lk_log(const char *arg, void *data, unsigned sz)
 }
 #endif
 
+void cmd_oem_poweroff(const char *arg, void *data, unsigned sz)
+{
+	fastboot_info("Powering off in 10 seconds");
+	fastboot_info("Please unplug the USB cable");
+	fastboot_okay("");
+	mdelay(10000);
+	shutdown_device();
+}
+
 void cmd_preflash(const char *arg, void *data, unsigned sz)
 {
 	fastboot_okay("");
@@ -3565,6 +3574,7 @@ void aboot_fastboot_register_commands(void)
 											{"reboot-bootloader", cmd_reboot_bootloader},
 											{"oem reboot-recovery", cmd_oem_reboot_recovery},
 											{"oem reboot-dload", cmd_oem_reboot_dload},
+											{"oem poweroff", cmd_oem_poweroff},
 											{"oem unlock", cmd_oem_unlock},
 											{"oem unlock-go", cmd_oem_unlock_go},
 											{"oem lock", cmd_oem_lock},
