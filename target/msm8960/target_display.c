@@ -262,6 +262,7 @@ void target_display_init(const char *panel_name)
 	dprintf(INFO, "display_init(),target_id=%d.\n", target_id);
 
 	switch (target_id) {
+#if 0
 	case LINUX_MACHTYPE_8960_LIQUID:
 		mipi_chimei_video_wxga_init(&(panel.panel_info));
 		/*
@@ -333,6 +334,7 @@ void target_display_init(const char *panel_name)
 
 		hdmi_set_fb_addr(panel.fb.base);
 		break;
+#endif
 	default:
 		return;
 	};
